@@ -60,3 +60,9 @@ function convertToFahrenheit() {
     celsiusValue.toFixed(2); //toFixed(2) rundet die Zahl auf 2 Nachkommastellen. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed?retiredLocale=de
   //(2) zwei nachkommerstellen
 }
+
+function convertToCelsius() {
+  const celsiusValue = parseFloat(document.getElementById("celsiusInput").value);
+  let fahrenheitValue = celsiusValue * 1.8 + 32; //Umrechnung von Celsius in Fahrenheit. Die Formel ist: C * 1.8 + 32.
+  document.getElementById("fahrenheitOutput").textContent = fahrenheitValue.toFixed(2);
+}
