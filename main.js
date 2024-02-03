@@ -1,36 +1,36 @@
-var ENVIRONMENT_NAME = "Ambient Temperature";
-var METRIC;
-var unit;
+// var ENVIRONMENT_NAME = "Ambient Temperature";
+// var METRIC;
+// var unit;
 
-function setup() {
-  IoEClient.setup({
-    type: "Temperature Monitor",
-    states: [
-      {
-        name: "Temperature",
-        type: "number",
-        unit: "&deg;C",
-        imperialUnit: "&deg;F",
-        toImperialConversion: "x*1.8+32",
-        toMetricConversion: "(x-32)/1.8",
-        decimalDigits: 1,
-      },
-    ],
-  });
+// function setup() {
+//   IoEClient.setup({
+//     type: "Temperature Monitor", // The name of the device type
+//     states: [
+//       {
+//         name: "Temperature", // The name of the state
+//         type: "number",
+//         unit: "&deg;C",
+//         imperialUnit: "&deg;F", 
+//         toImperialConversion: "x*1.8+32",
+//         toMetricConversion: "(x-32)/1.8",
+//         decimalDigits: 1,
+//       },
+//     ],
+//   });
 
-  measurementSystemChangeEvent();
-}
+//   measurementSystemChangeEvent();
+// }
 
-function loop() {
-  detect();
-  delay(1000);
-}
+// function loop() {
+//   detect();
+//   delay(1000);
+// }
 
-function measurementSystemChangeEvent() {
-  METRIC = isUsingMetric();
-  unit = METRIC ? "C" : "F";
-  detect();
-}
+// function measurementSystemChangeEvent() {
+//   METRIC = isUsingMetric();
+//   unit = METRIC ? "C" : "F";
+//   detect();
+// }
 
 function detect() {
   var value = Environment.get(ENVIRONMENT_NAME);
@@ -62,7 +62,10 @@ function convertToFahrenheit() {
 }
 
 function convertToCelsius() {
-  const celsiusValue = parseFloat(document.getElementById("celsiusInput").value);
+  const celsiusValue = parseFloat(
+    document.getElementById("celsiusInput").value
+  );
   let fahrenheitValue = celsiusValue * 1.8 + 32; //Umrechnung von Celsius in Fahrenheit. Die Formel ist: C * 1.8 + 32.
-  document.getElementById("fahrenheitOutput").textContent = fahrenheitValue.toFixed(2);
+  document.getElementById("fahrenheitOutput").textContent =
+    fahrenheitValue.toFixed(2);
 }
