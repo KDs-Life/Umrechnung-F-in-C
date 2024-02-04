@@ -34,13 +34,12 @@
 
 function detect() {
   var value = Environment.get(ENVIRONMENT_NAME);
-
-  setCustomText(30, 25, 200, 20, convertTemperature(value) + "F");
-
+  setCustomText(30, 25, 200, 20, convertTemperature(value) + "F"); 
+  //hier wurde convertTemperature(value) + "F" hinzugefügt, um die Temperatur in Fahrenheit anzuzeigen.  convertTemperature(value) ist die Funktion, die die Temperatur in Fahrenheit umrechnet.
   IoEClient.reportStates(value);
   setDeviceProperty(getName(), "level", value);
 }
-
+//diese Funktion wurde hinzugefügt, um die Temperatur in Fahrenheit umzurechnen.
 function convertTemperature(value) {
   if (METRIC) return value.toFixed(2);
   else return (value * 1.8 + 32).toFixed(2);
